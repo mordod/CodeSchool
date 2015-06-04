@@ -2,12 +2,15 @@ body{
 	font-family: arial;
 	color:#000;
 	margin:0px;
+    
 }
 
 #superawesome{
 	width:960px;
 	margin:0px auto;
 	background-color: #ccc;
+	overflow: hidden;
+
 }
 
 header{
@@ -66,6 +69,8 @@ main section{
 	-webkit-animation-duration:1s;
 	animation-duration:1s;
 	overflow: hidden;
+	
+	
 }
 
 main section:last-child:nth-of-type(odd){
@@ -119,70 +124,74 @@ img{
 	max-width: 100%;
 	height:auto;
 }
-
-
-ul{
-	list-style-type: none;
-	margin:0px;
-	padding:0px;
-	text-align: center;
-	background-color: #a61415;
-}
-
-ul li{
-	float:left;
-	width:100px;
-	width:20%;
-	position: relative;
-}
-
-ul li a{
-	display:block;
-	font-size:14px;
-	color:#fff;
+nav a{
+	color: #fff;
+	display: block;
 	text-decoration: none;
-	letter-spacing: 0px;
-	height:50px;
-	line-height: 50px;
+
+
 }
 
-ul li a:hover{
-	background: #000000;
-	color:#ccc;
-}
 
-ul li a:active{
-	background: #ffff00;
-}
+nav > ul{
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	position: relative;
 
-ul li ul{
-	display:none;
+}
+nav > ul > li{
+	float: left;
+	width: 20%;
+	text-align: center;
+}
+nav > ul > li:hover{
+	border-bottom: 2px solid #000;
+	}
+
+nav > ul > li > a{
+	height: 55px;
+	line-height: 55px;
+
+
+}
+nav > ul > li > ul{
+	display: none;
 	position: absolute;
-	top:50px;
-	left:0px;
-	width:100%;
+	top: 55px;
+	left: 0px;
+	background:  #aaa;
+	width: 100%;
+	text-align: left;
+	list-style-type: none;
+	padding: 0px;
+	margin:  0px;
+
+	z-index: 0;
+
+
 }
-
-ul li:hover ul{
-	display:block;
-	animation-name:spin;
-	-webkit-animation-name:spin;
-	animation-duration:100ms;
-	-webkit-animation-duration:100ms;
+nav > ul > li:hover > ul{
+	display: block;
+	animation-name:flip;
+	animation-duration:1s;
+	-webkit-animation-name:flip;
+	-webkit-animation-duration:1s;
+	animation-iteration-count: 1;
+	-webkit-animation-iteration-count:1;
+	
+	
 }
-
-ul ul li{
-	float:none;
-	width:100%;
+nav > ul > li > ul >li{
+	float: left;
+	padding: 20px;
+	width: calc(20% - 40px);
 }
+nav > ul > li > ul >li > a{
+	border-bottom: 2px solid #000;
+	margin-bottom: 25px;
 
-
-
-
-
-
-
-
+}
 
 
 

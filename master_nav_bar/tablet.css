@@ -1,0 +1,31 @@
+body{
+	margin:0px;
+}
+
+aside{
+	display:none;
+}
+
+#superawesome{
+	width:100%;
+}
+
+main{
+	width:calc(100% - 30px);
+	padding:15px;
+}
+
+main section{
+	width:calc(50% - 40px);
+	margin:15px;
+	border:5px solid #000;
+}
+
+main section:last-child:nth-of-type(odd){
+	width:calc(100% - (100px / 3) - 10px);
+}
+
+main section img{
+	display:block;
+	margin:0px auto;
+}
