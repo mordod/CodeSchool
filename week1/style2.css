@@ -1,0 +1,190 @@
+body{
+	font-family: arial;
+	color:#000;
+	margin:0px;
+}
+
+#superawesome{
+	width:960px;
+	margin:0px auto;
+	background-color: #ccc;
+}
+
+header{
+	height:250px;
+	background-color: #cccccc;
+	padding:0px;
+	margin:0px;
+}
+
+header h1{
+	padding:calc((250px - 188px) / 2) 0px;
+	font-size: 0px;
+	text-align: center;
+}
+
+nav{
+	background-color: #a61415;
+}
+
+nav h3{
+	margin-top:0px;
+}
+
+aside{
+	float:right;
+	width:260px;
+	background:#cccccc;
+}
+
+main{
+	width:calc(700px - (100px / 3));
+	margin-right: 260px;
+	background: #fff;
+	padding:calc(100px / 6);
+	min-height: 500px;
+}
+
+main:after, nav:after {
+    content: " "; /* Older browsers do not suport empty content */
+    visibility: hidden;    
+    display: block;
+    clear: both;
+    font-size: 0;
+    height: 0;
+}
+
+main section{
+	height: 300px;
+	width: 300px;
+	background-color: #cccccc;
+	margin:calc(100px / 6);
+	float:left;
+	font-family: times;
+	-webkit-animation-name:spin;
+	animation-name:spin;
+	-webkit-animation-duration:1s;
+	animation-duration:1s;
+	overflow: hidden;
+}
+
+main section:last-child:nth-of-type(odd){
+	width:calc(100% - (100px / 3));
+	margin:calc(100px / 6);
+}
+
+section p{
+	padding:15px;
+	margin:0px;
+}
+
+@keyframes spin{
+	0%{
+		transform:rotate(0deg);
+	}
+	30%{
+		transform:rotate(15deg);
+	}
+	60%{
+		transform:rotate(-15deg);
+	}
+	100%{
+		transform:rotate(0deg);
+	}
+}
+
+@-webkit-keyframes spin{
+	0%{
+		transform:rotate(0deg);
+	}
+	30%{
+		transform:rotate(15deg);
+	}
+	60%{
+		transform:rotate(-15deg);
+	}
+	100%{
+		transform:rotate(0deg);
+	}
+}
+
+footer{
+	clear:both;
+	background-color: #000000;
+	height:75px;
+}
+
+
+img{
+	max-width: 100%;
+	height:auto;
+}
+
+
+ul{
+	list-style-type: none;
+	margin:0px;
+	padding:0px;
+	text-align: center;
+	background-color: #a61415;
+}
+
+ul li{
+	float:left;
+	width:100px;
+	width:20%;
+	position: relative;
+}
+
+ul li a{
+	display:block;
+	font-size:14px;
+	color:#fff;
+	text-decoration: none;
+	letter-spacing: 0px;
+	height:50px;
+	line-height: 50px;
+}
+
+ul li a:hover{
+	background: #000000;
+	color:#ccc;
+}
+
+ul li a:active{
+	background: #ffff00;
+}
+
+ul li ul{
+	display:none;
+	position: absolute;
+	top:50px;
+	left:0px;
+	width:100%;
+}
+
+ul li:hover ul{
+	display:block;
+	animation-name:spin;
+	-webkit-animation-name:spin;
+	animation-duration:100ms;
+	-webkit-animation-duration:100ms;
+}
+
+ul ul li{
+	float:none;
+	width:100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

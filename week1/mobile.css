@@ -1,0 +1,8 @@
+main section{
+	width:calc(100% - 40px);
+}
+
+ul li{
+	float:none;
+	width:100%;
+}
