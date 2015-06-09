@@ -1,0 +1,107 @@
+
+
+#board{
+	background-image: url("http://stuffpoint.com/the-colours-of-the-rainbow/image/205562-the-colours-of-the-rainbow-rainbow-gradient.png");
+	display: inline-block;
+	width: auto;
+	height: auto;
+	border-radius: 25px;
+	}
+.row{
+	overflow: auto;
+
+}
+.tile {
+	float: left;
+	border-radius: 25px;
+	background-color: #ccc;
+	margin: 10px;
+	height: 100px;
+	line-height: 100px;
+	width: 100px;
+}
+.tile-2 {
+	background-color: #e37e05;
+	text-align: center;
+
+	font-size: 40px;
+
+}
+.tile-4 {
+	background-color: #41821d;
+	text-align: center;
+	font-size: 40px;
+
+}
+.tile-8 {
+	background-color: #f00600;
+	text-align: center;
+	font-size: 40px;
+
+}
+.tile-16 {
+	background-color: #820ae8;
+	text-align: center;
+	font-size: 40px;
+
+}
+.tile-32 {
+	background-color: #0b83fc;
+	text-align: center;
+	font-size: 40px;
+
+}
+.tile-64 {
+	background-color: #004358;
+	text-align: center;
+	font-size: 40px;
+
+}
+.tile-128 {
+	background-color: #1f8a70;
+	text-align: center;
+	font-size: 40px;
+
+}
+.tile-256 {
+	background-color: #bedb39;
+	text-align: center;
+	font-size: 40px;
+
+}
+.tile-512 {
+	background-color: #ffe11a;
+	text-align: center;
+	font-size: 40px;
+
+}
+.tile-1024 {
+	background-color: #fd7400;
+	text-align: center;
+	font-size: 40px;
+
+}
+.tile-2048 {
+	background-color: #d90000;
+	text-align: center;
+	font-size: 40px;
+
+}
+.tile-4096 {
+	background-color:#284907;
+	text-align: center;
+	font-size: 40px;
+
+}
+.tile-8192 {
+	background-color: #ff2d00;
+	text-align: center;
+	font-size: 40px;
+
+}
+.tile-16384 {
+	background-color: #04756f;
+	text-align: center;
+	font-size: 40px;
+
+}
