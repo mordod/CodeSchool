@@ -1,18 +1,19 @@
+var size = 4
 var board = {
-	"tile0-0": 2,
-	"tile0-1": 4,
-	"tile0-2": 8,
-	"tile0-3": 16,
-	"tile1-0": 32,
-	"tile1-1": 64,
-	"tile1-2": 128,
-	"tile1-3": 256,
-	"tile2-0": 512,
-	"tile2-1": 1024,
-	"tile2-2": 2048,
-	"tile2-3": 4096,
-	"tile3-0": 8192,
-	"tile3-1": 16384
+//	"tile0-0": 2,
+//	"tile0-1": 4
+//	"tile0-2": 2,
+//	"tile0-3": 4,
+	//"tile1-0": 2,
+//	"tile1-1": 4,
+//	"tile1-2": 2,
+//	"tile1-3": 4,
+//	"tile2-0": 2,
+//	"tile2-1": 4,
+//	"tile2-2": 2,
+	//"tile2-3": 4,
+//	"tile3-0": 2,
+	//"tile3-1": 2
 
 
 };
@@ -56,14 +57,18 @@ var tileKey = function (col,row) {
 
 
 var refreshBoard = function() {
-	for (var row = 0; row < 4; row++){
+	for (var row = 0; row < size; row++){
 		
 
-		for (var col = 0; col < 4; col++){
+		for (var col = 0; col < size; col++){
 			var key = tileKey(col, row);
 			var val = board[key];
 			var $tile = $("#" + key);
+			$tile.removeClass();
+			$tile.text("").addClass("tile");
+
 			$tile.text(val).addClass("tile-" + val);
+
 
 
 
@@ -86,11 +91,12 @@ var refreshBoard = function() {
 
 var createBoard = function() {
 	var $board = $("#board");
-	for (var row = 0; row < 4; row++){
+	for (var row = 0; row < size; row++){
 		var $row = $("<div></div>").addClass("row");
 
-		for (var col = 0; col < 4; col++){
+		for (var col = 0; col < size; col++){
 			var $tile = $("<div></div>").addClass("tile");
+
 			$tile.attr("id", tileKey(col,row));
 
 			$row.append($tile);
@@ -98,8 +104,240 @@ var createBoard = function() {
 
 		}
 	}
+	generateRandom();
+	generateRandom();
 }
 
+
+var combineNumbers = function (numbers) {
+  var newNumbers = [];
+
+  while (numbers.length > 0) {
+    if (numbers[0] === numbers[1]) {
+      // add the first two numbers together
+      var sum = numbers[0] + numbers[1];
+      // push the sum onto newNumbers array
+      newNumbers.push(sum);
+      // remove BOTH numbers from numbers array
+      numbers.shift();
+      numbers.shift();
+    } else {
+      // push the first number onto newNumbers array
+      newNumbers.push(numbers[0]);
+      // remove the first number from numbers array
+      numbers.shift();
+    }
+  }
+
+  return newNumbers;
+};
+
+
+var getNumbersInRow = function (row) {
+	var numbers = [];
+	for (var col = 0; col < size; col++){
+		var key = tileKey(col,row);
+		var val = board[key];
+		if (val){
+			numbers.push(val);
+
+		}
+
+	}
+
+
+	return numbers;
+};
+
+var getNumbersInCol = function (col) {
+	var numbers = [];
+	for (var row = 0; row < size; row++){
+		var key = tileKey(col,row);
+		var val = board[key];
+		if (val){
+			numbers.push(val);
+
+		}
+
+	}
+
+
+	return numbers;
+};
+
+var addZeros = function (numbers) {
+    var newNumbers = [];
+    for (var ze = 0; ze <numbers.length; ze++) {
+    	if (numbers[ze] != 0){
+    		newNumbers.push(numbers[ze]);
+
+
+    	}
+
+    }
+    return newNumbers;
+}; 
+
+
+var combineRowLeft = function (row){
+	
+	var oldNumbers = getNumbersInRow(row);
+
+	var newNumbers = combineNumbers(oldNumbers);
+	
+
+	
+
+	SetNumbersInRow(row, newNumbers);
+	refreshBoard();	
+	
+
+	
+};
+var combineColUp = function (col){
+	var oldNumbers = getNumbersInCol(col);
+	var newNumbers = combineNumbers(oldNumbers);
+	if (newNumbers == oldNumbers){
+		same = true
+	}
+	SetNumbersInCol(col, newNumbers);
+	refreshBoard();
+};
+
+var combineRowRight = function (row){
+	var oldNumbers = getNumbersInRow(row);
+	var newNumbers = combineNumbers(oldNumbers)
+	if (newNumbers == oldNumbers){
+		same = true
+	}
+	newNumbers.reverse();
+    for(i= newNumbers.length; i < size; i++){
+    	newNumbers.push(undefined);
+
+    }
+    newNumbers.reverse();
+    
+	SetNumbersInRow(row, newNumbers);
+	refreshBoard();
+};
+
+var combineColDown = function (col){
+	var oldNumbers = getNumbersInCol(col);
+	var newNumbers = combineNumbers(oldNumbers)
+	if (newNumbers == oldNumbers){
+		same = true
+	}
+	newNumbers.reverse();
+	for(i= newNumbers.length; i < size; i++){
+    	newNumbers.push(undefined);
+
+    }
+    newNumbers.reverse();
+	SetNumbersInCol(col, newNumbers);
+	refreshBoard();
+};
+
+
+var keyPressed = function (direction){
+	var oldboard = $.extend({},board);
+	
+
+	if (direction === 1) {
+		for (var i = 0; i < size; i++){
+			combineRowLeft(i);		
+		};
+	};
+	if (direction === 2) {
+		for (var i = 0; i < size; i++){
+			combineColUp(i);	
+		};
+	};
+	if (direction === 3) {
+		for (var i = 0; i < size; i++){
+			combineRowRight(i);	
+		};
+	};
+	if (direction === 4) {
+		for (var i = 0; i < size; i++){
+			combineColDown(i);	
+		};
+	};
+	console.log(oldboard);
+	if (didBoardChange(oldboard)){
+		generateRandom();
+
+	}
+};
+var didBoardChange = function (oldboard){
+	for (var row = 0; row < size; row++){
+		for (var col = 0; col < size; col++){
+			var key = tileKey(col,row);
+			if(board[key] !== oldboard[key]){
+
+				
+				return true
+			}
+		}
+	}
+
+	return false
+
+};
+
+
+var generateRandom = function(){
+	//console.log("cheese");
+	var possibleCells = [];
+	for (var row = 0; row < size; row++){
+		for (var col = 0; col < size; col++){
+			var key = tileKey(col, row);
+			var val = board[key];
+			//console.log("cheese");
+			if (!val) {
+				//console.log("cheese", key);
+				possibleCells.push(key);
+
+
+
+			}
+
+		}
+	}
+	var numSelector = Math.floor((Math.random() * possibleCells.length) + 1)-1;
+	//console.log(numSelector);
+	var newKey = possibleCells[numSelector];
+	if (Math.random() > .5 ){
+		board[newKey] = 2;
+
+	}else{
+		board[newKey] = 4;
+	}
+	refreshBoard();
+
+};
+
+
+var SetNumbersInCol = function(col, newNumbers){
+	for (var row = 0; row < size; row++){
+		var key = tileKey(col,row);
+		board[key] = newNumbers[row];
+
+	}
+
+
+
+};
+
+var SetNumbersInRow = function(row, newNumbers){
+	for (var col = 0; col < size; col++){
+		var key = tileKey(col,row);
+		board[key] = newNumbers[col];
+
+	}
+
+
+
+};
 
 //var changeVal = function ($cell,number,class) {
 //	$cell.text(number).addClass(class);
@@ -114,6 +352,7 @@ $( document ).ready(function (){
 	createBoard();
 	refreshBoard();
 
+
 	
 
 
@@ -127,19 +366,29 @@ $( document ).ready(function (){
 		switch(e.which) {
 			case 37:
 			case 65:
-				alert("left");
+				
+				keyPressed(1);
+				
+				
+
+				
+
+
 				break;
 			case 38:
 			case 87:
-				alert("up");
+				
+				keyPressed(2);
 				break;
 			case 39:
 			case 68:
-				alert("right");
+				
+				keyPressed(3);
 				break;
 			case 40:
 			case 83:
-				alert("down");
+				
+				keyPressed(4);
 				break;
 
 		}
