@@ -1,4 +1,8 @@
 var size = 4
+var score = 6
+
+var bestScore = 0 
+var doCalcScore = false
 var board = {
 //	"tile0-0": 2,
 //	"tile0-1": 4
@@ -68,25 +72,24 @@ var refreshBoard = function() {
 			$tile.text("").addClass("tile");
 
 			$tile.text(val).addClass("tile-" + val);
+			//if (val != undefined) and doCalcScore){
+			//	console.log(val);
+			//	score += val;
+			//};
 
-
-
-
-
-
-
-
+			
+			$tile.addClass("newTileAnimation");
+			$tile.removeClass("newTileAnimation");
+			//console.log(score);
 		}
 	}
-//	var $cell1 = $(".row:first-child .tile:last-child");
-//	var $cell2 = $(".row:last-child .tile:first-child");
+	doCalcScore = true;
+	//	var $cell1 = $(".row:first-child .tile:last-child");
+	//	var $cell2 = $(".row:last-child .tile:first-child");
 
-//	$cell2.text("2").addClass("tile-2");
-//	$cell1.text("4").addClass("tile-4");
-//	changeVal ($cell2,"2","tile-2")
-	
-
-
+	//	$cell2.text("2").addClass("tile-2");
+	//	$cell1.text("4").addClass("tile-4");
+	//	changeVal ($cell2,"2","tile-2")
 };
 
 var createBoard = function() {
@@ -116,6 +119,7 @@ var combineNumbers = function (numbers) {
     if (numbers[0] === numbers[1]) {
       // add the first two numbers together
       var sum = numbers[0] + numbers[1];
+      updateScore(sum);
       // push the sum onto newNumbers array
       newNumbers.push(sum);
       // remove BOTH numbers from numbers array
@@ -236,6 +240,39 @@ var combineColDown = function (col){
 	SetNumbersInCol(col, newNumbers);
 	refreshBoard();
 };
+var checkGameOver = function(){
+	var empty = getEmptyTiles();
+	if (empty.length > 0){
+		return false;
+	}
+	for (var row = 0; row < size; row++){
+		var numbers = getNumbersInRow(row);
+		for(var n = 0; n < numbers.length - 1; n++){
+			if (numbers[n] === numbers[n+1]){
+				return false;
+
+			}
+		}
+
+	}
+
+	for (var col = 0; col < size; col++){
+		var numbers = getNumbersInCol(col);
+		for(var n = 0; n < numbers.length - 1; n++){
+			return false;
+			if (numbers[n] === numbers[n+1]){
+				return false;
+
+			}
+
+			
+		}
+
+	}
+	return true;
+
+
+};
 
 
 var keyPressed = function (direction){
@@ -262,11 +299,33 @@ var keyPressed = function (direction){
 			combineColDown(i);	
 		};
 	};
-	console.log(oldboard);
+	//console.log(oldboard);
 	if (didBoardChange(oldboard)){
 		generateRandom();
+		localStorage.setItem("board",JSON.stringify(board));
+
+
+		}
+		if(checkGameOver()){
+			alert("checkGameOver");
+		}
+};
+var getEmptyTiles = function(){
+	var empty = [];
+	for(var row = 0; col < size; row++){
+		for(var col = 0; col < size; col++){
+			var key = tileKey(col,row);
+			if (board[key] === undefined) {
+				empty.push(key);
+
+			}
+		}
+
 
 	}
+
+	return empty;
+
 };
 var didBoardChange = function (oldboard){
 	for (var row = 0; row < size; row++){
@@ -283,6 +342,8 @@ var didBoardChange = function (oldboard){
 	return false
 
 };
+
+
 
 
 var generateRandom = function(){
@@ -346,11 +407,75 @@ var SetNumbersInRow = function(row, newNumbers){
 
 
 //};
+
+var updateScore = function (increment) {
+
+	score += increment;
+	if (score > bestScore){
+		bestScore = score
+		localStorage.setItem("bestScore", bestScore);
+
+	}
+	$("#score").text(score);
+	$("#bestScore").text(bestScore);
+
+};
+
+
+var loadSavedData = function (){
+
+	var savedBestScore = localStorage.getItem("bestScore");
+	if (savedBestScore){
+		bestScore = savedBestScore
+	}
+	var savedBoard = localStorage.getItem("board");
+	if (savedBoard){
+		JSON.parse(savedBoard);
+		board = savedBoard;
+	}else{
+		startNewGame()
+	}
+
+
+
+};
+
+
+var startNewGame = function(){
+	board = {};
+	score = 0;
+	createBoard();
+
+	generateRandom();
+	generateRandom();
+	refreshBoard();
+	updateScore();
+	
+
+
+
+}
+
+
+
 $( document ).ready(function (){
 
 	//alert("cheese")
-	createBoard();
-	refreshBoard();
+	
+	startNewGame();
+
+
+	$("#new-game").hover(function(){
+
+
+	});
+	$("#new-game").click(function(){
+		startNewGame();
+	});
+
+
+
+
 
 
 	
