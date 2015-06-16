@@ -1,0 +1,17 @@
+extend layout
+block title
+	title Home
+block content
+	h1 WELCOME	
+	form(method="post")
+		- for(var j = 0; j < statements.length; j++)
+			div= statements[j]
+			ul
+				- for(var i = 0; i < answers.length; i++)
+						li
+							input(type="radio", name="s"+j, value=i)
+							= answers[i]
+			hr
+
+
+		input(type="submit",value='send Survey')
