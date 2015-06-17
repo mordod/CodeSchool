@@ -1,0 +1,13 @@
+extends layout
+block title
+	title ORDER #{id}
+block content
+	p Your order ##{id}
+	p pickup time: #{order.date}
+	p customer name: #{order.name}
+	P what you ordered: #{order.bar}
+	P your server: #{order.server}
+	P what your paying with: #{order.money}
+
+	form(method="post", action="/orders/"+id+"?_method=DELETE", onsubmit='return confirm("do you want to delete this order?")')
+		input(type="submit", value="Delete Order")

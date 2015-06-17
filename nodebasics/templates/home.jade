@@ -3,14 +3,19 @@ block title
 	title Home
 block content
 	h1 WELCOME	
+	form(method="get", action="/query")
+		input(type="checkbox", name="foo", value="rules")
+		input(type="email", name="baz", placeholder="give me your email")
+		textarea(name="bar")
+		input(type="submit")
 	form(method="post")
-		- for(var j = 0; j < statements.length; j++)
-			div= statements[j]
+		each statement, j in statements
+			div= statement
 			ul
-				- for(var i = 0; i < answers.length; i++)
+				each answer, i in answers 
 						li
 							input(type="radio", name="s"+j, value=i)
-							= answers[i]
+							= answer
 			hr
 
 
