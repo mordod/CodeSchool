@@ -1,0 +1,15 @@
+extend layout
+block title	
+	title Orders
+block content
+	h1 Our Orders
+	table
+		tr
+			th ID
+			th Customer Name
+			th Pickup Time
+		each order, orderId in orders
+			tr
+				td= orderId
+				td= order.name
+				td= order.date

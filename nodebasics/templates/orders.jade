@@ -1,8 +1,9 @@
-extend layout
+extends layout
 block title	
 	title Orders
 block content
 	h1 Our Orders
+	a(href="/orders/new") Create an Order
 	table
 		tr
 			th ID
@@ -10,6 +11,7 @@ block content
 			th Pickup Time
 		each order, orderId in orders
 			tr
-				td= orderId
+				td
+					a(href="/orders/" + orderId)= orderId
 				td= order.name
 				td= order.date

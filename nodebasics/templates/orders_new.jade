@@ -1,8 +1,9 @@
-extend layout
+extends layout
 block title	
 	title New Orders
 block content
 	h1 Our New Order
+	a(href='/orders/') All Order
 	form(method="post", action="/orders")
 		input(type="datetime-local", name="date", placeholder="DATE")
 		br

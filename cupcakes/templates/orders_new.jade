@@ -1,0 +1,17 @@
+extend layout
+block title	
+	title New Orders
+block content
+	h1 Our New Order
+	form(method="post", action="/orders")
+		input(type="datetime-local", name="date", placeholder="DATE")
+		br
+		input(type="text", name="name", placeholder="NAME")
+		br
+		textarea(name="bar",placeholder="WHAT DO YOU WANT FOR DINNER")
+		br
+		input(type="text", name="server", placeholder='WHOSE YOUR SERVER')
+		br
+		input(type="text", name="money", placeholder='WHAT WILL YOU GIVE?')
+		br
+		input(type="submit")
