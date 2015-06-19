@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="utf-8">
+	<title>MY ngApp</title>
+	<script src='vendor/angular.min.js'></script>
+	<script src='javascripts/application.js'></script>
+</head>
+<body ng-controller="applicationCtrl as app" >
+	<input type="text" ng-model="myText">
+	<img src="images/{{myText}}" style="max-widt: 300px">
+	<img ng-repeat="image in app.imagesNames" src="images/{{image}}" style="max-width: 300px">
+</body>
+</html>
