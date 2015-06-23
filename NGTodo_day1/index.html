@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+
+	<link rel="stylesheet" href="vendor/bootstrap.min.css">
+	<script src="vendor/jquery.min.js"></script>
+	<script src="vendor/angular.min.js"></script>
+
+	<link rel="stylesheet" href="stylesheets/application.css">
+	<script src="javascripts/application.js"></script>
+	<script src="javascripts/item.fct.js"></script>
+	<script src="javascripts/form.ctrl.js"></script>
+	<script src="javascripts/list.ctrl.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-6" ng-controller="ListCtrl as lidy">
+				<h2>To-Do List</h2>
+				<ul id="todo-list">
+					<li ng-repeat=" item in lidy.listItems">
+						<input type="checkbox" ng-model="item.complete">
+						{{item.title }}
+
+						<a href"#" class="pull-right" ng-click="item.remove()">
+
+							<i class="glyphicon glyphicon-trash"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-xs-6" ng-controller="FormCtrl as fred">
+				<h2>New Item</h2>
+				<form ng-submit="fred.formAddItem()">
+				<form>
+					<div class="form-group">
+						<label for="newItem-title">Title</label>
+						<input id="newItem-title" type="text" class="
+						form-control" ng-model='fred.formItemData.title'>
+					</div>
+
+					<div class="checkbox">
+						<label for="newItem-complete">
+							<input id="newItem-complete" type="checkbox" 
+							ng-model= 'fred.formItemData.complete'>
+
+							Complete
+						</label>
+					</div>
+
+					<button type="submit" class="btn btn-primary btn-block">Save</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

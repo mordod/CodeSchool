@@ -1,0 +1,10 @@
+*
+{
+	font-family: 'Avenir', Arial, sans-serif;
+}
+
+#todo-list
+{
+	list-style: none;
+	padding-left: 15px;
+}
