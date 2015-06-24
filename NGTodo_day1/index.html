@@ -21,13 +21,29 @@
 				<h2>To-Do List</h2>
 				<ul id="todo-list">
 					<li ng-repeat=" item in lidy.listItems">
-						<input type="checkbox" ng-model="item.complete">
-						{{item.title }}
-
-						<a href"#" class="pull-right" ng-click="item.remove()">
-
-							<i class="glyphicon glyphicon-trash"></i>
+						<input type="checkbox" ng-model="item.complete" ng-change="item.save(true)">
+						<a href="" class="title link" ng-click="item.edit()">
+							<span class="title" ng-class="{complete:item.complete}" ng-hide="item.editing">{{item.title }}</span>
 						</a>
+						<input type="text" ng-model="item.title" ng-show="item.editing">
+
+						<span class="pull-right">
+							<a href="" ng-click="item.edit()">
+
+								<i class="glyphicon glyphicon-pencil" ng-hide="item.editing"></i>
+								
+							</a>
+							<a href="" ng-click="item.save(false)">
+
+			
+								<i class="glyphicon glyphicon-floppy-disk" ng-show="item.editing"></i>
+							</a>
+
+							<a href="" ng-click="item.remove()">
+
+								<i class="glyphicon glyphicon-trash"></i>
+							</a>
+						</span>
 					</li>
 				</ul>
 			</div>
@@ -38,7 +54,7 @@
 					<div class="form-group">
 						<label for="newItem-title">Title</label>
 						<input id="newItem-title" type="text" class="
-						form-control" ng-model='fred.formItemData.title'>
+						form-control" ng-model='fred.formItemData.title' required>
 					</div>
 
 					<div class="checkbox">

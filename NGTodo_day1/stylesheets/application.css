@@ -8,3 +8,26 @@
 	list-style: none;
 	padding-left: 15px;
 }
+li
+{
+	margin: 5px;
+	border-style: solid;
+    border-color: #ccc;
+
+
+
+}
+#todo-list .title
+{
+	display: inline-block;
+	height: 20 .5px;
+	padding: 6.5px;
+}
+#todo-list .title.complete
+{
+	text-decoration: line-through;
+}
+#todo-list .title.link
+{
+	color: #000;
+}
