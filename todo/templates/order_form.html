@@ -1,0 +1,21 @@
+<h2>NEW ORDER</h2>
+<form ng-submit="formVm.addOrder()">
+	<div class="form-group">
+		<label for="newOrder-name">Order-Name</label>
+		<input type="text" id="newOrder-pickup" class='form-control' ng-model="formVm.order.name">
+	</div>
+	<div class="form-group">
+		<label for="newOrder-food">Order-food</label>
+		<input type="text" id="newOrder-pickup" class='form-control' ng-model="formVm.order.food">
+	</div>
+	<div class="form-group">
+		<label for="newOrder-server">Order-server</label>
+		<input type="text" id="newOrder-pickup" class='form-control' ng-model="formVm.order.server">
+	</div>
+	<div class="form-group">
+		<label for="newOrder-pickup">Order-pickup</label>
+		<input type="text" id="newOrder-pickup" class='form-control' ng-model="formVm.order.pickup">
+	</div>
+	<button type="submit" class="btn btn-primary btn-block">
+	CREATE</button>
+</form>
