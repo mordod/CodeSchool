@@ -1,4 +1,14 @@
 h1 restaurants
-ul
+table
+	tr		
+		th Name
+		th Type
+		th Phone
 	each restaurant in restaurants
-		li= restaurant
+		tr
+			td
+				a(href="/restaurants/" + restaurant._id)= restaurant.name
+			td= restaurant.type
+			td= restaurant.phone
+
+a(href="/restaurants/new") New restaurant
