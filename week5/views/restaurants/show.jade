@@ -1,20 +1,11 @@
-ctype html
-html
-  body
-    h1 EDIT INFORMATION
-    form(method="post" action="/restaurants")
-      | Name:
-      br
-      input(type='text', name='name' value= restaurant.name)
-      br
-      | Type:
-      br
-      input(type='text', name='type' value= restaurant.type)
-      br
-      | Phone:
-      br
-      input(type='text', name='phone' value= restaurant.phone)
-      br
-      br
-      input(type='submit')
-      br
+extend ../layout
+
+block content
+	h2 Showing Restaurant
+
+	p Name: #{restaurant.name}
+	p Type: #{restaurant.type}
+	p Phone: #{restaurant.phone}
+
+	form(method="post" action="/restaurants/#{restaurant._id}?_method=delete")
+		input(type="submit" value = "DELETE YOU RESTAURANT")

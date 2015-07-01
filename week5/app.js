@@ -1,7 +1,8 @@
 var express = require('express'),
 	http = require('http'),
 	mongoose = require("mongoose"),
-	bodyParser = require("body-parser");
+	bodyParser = require("body-parser"),
+	methodOverride = require("method-override");
 
 mongoose.connect('mongodb://neon/mccade');
 
@@ -13,6 +14,8 @@ app.set("views", "./views");
 app.set('view engine', "jade");
 
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(methodOverride("_method"));
+app.use("/", express.static("public"));
 
 app.get("/", function(req, res){
 	res.render("index");

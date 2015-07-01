@@ -1,0 +1,17 @@
+h1 Edit Restaurant
+
+form(method='post' action='/restaurants/#{restaurant._id}?_method=put')
+  p
+    label Name
+    br
+    input(type='text' name='name' value=restaurant.name)
+  p
+    label Type
+    br
+    input(type='text' name='type' value=restaurant.type)
+  p
+    label Phone
+    br
+    input(type='text' name='phone' value=restaurant.phone)
+  p
+    input(type='submit' value='Update Restaurant')

@@ -13,7 +13,7 @@ var RestaurantsController = {
 
 	new: function(req, res) {
 
-		res.render("restaurants/newRestaurant",{});
+		res.render("restaurants/new",{});
 
 
 
@@ -50,6 +50,35 @@ var RestaurantsController = {
 
 		//})
 		
+	},
+	edit: function(req, res){
+		Restaurant.findOne({_id: req.params.id}, function(err, restaurant){
+			res.render('restaurants/edit', {
+				restaurant: restaurant
+			});
+
+
+		});
+
+
+
+	},
+	update: function(req, res){
+		Restaurant.findOne({_id: req.params.id},{
+			name: req.body.name,
+			type: req.body.type,
+			phone: req.body.phone
+		}, function (err, restaurant){
+			res.redirect("/restaurants/" + req.params.id);
+		});
+
+	},
+	destroy: function(req, res){
+		Restaurant.remove({_id: req.params.id}, function (err){
+			res.redirect("/restaurants");	
+		});
+
+	
 	}
 
 };
