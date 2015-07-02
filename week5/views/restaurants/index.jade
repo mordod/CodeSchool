@@ -1,16 +1,17 @@
+extends layout
 h1 Listing All Restaurants
-
-table
-  tr
-    th Name
-    th Type
-    th Phone
-  each restaurant in restaurants
+block content
+  table
     tr
-      td
-        a(href='/restaurants/' + restaurant._id)= restaurant.name
-      td= restaurant.type
-      td= restaurant.phone
+      th Name
+      th Type
+      th Phone
+    each restaurant in restaurants
+      tr
+        td
+          a(href='/restaurants/' + restaurant._id)= restaurant.name
+        td= restaurant.type
+        td= restaurant.phone
 
-p
-  a(href='/restaurants/new') New Restaurant
+  p
+    a(href='/restaurants/new') New Restaurant

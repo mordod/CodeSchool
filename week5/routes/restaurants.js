@@ -7,13 +7,13 @@ var RestaurantsController = require("../controllers/restaurants_controller.js");
 var router = express.Router();
 
 
-router.get('/', RestaurantsController.index);
-router.get("/new", RestaurantsController.new);
-router.post("/", RestaurantsController.create);
-router.get("/:id", RestaurantsController.show);
-router.get("/:id/edit", RestaurantsController.edit);
-router.put("/:id", RestaurantsController.update);
-router.delete("/:id", RestaurantsController.destroy);
+router.get('/restaurants(.:format)?', RestaurantsController.index);
+router.get("/restaurants/new", RestaurantsController.new);
+router.post("/restaurants(.:format)?", RestaurantsController.create);
+router.get("/restaurants/(:id)(.:format)?", RestaurantsController.show);
+router.get("/restaurants/:id/edit", RestaurantsController.edit);
+router.put("/restaurants/:id", RestaurantsController.update);
+router.delete("/restaurants/:id", RestaurantsController.destroy);
 
 
 module.exports = router;

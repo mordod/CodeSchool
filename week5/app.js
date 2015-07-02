@@ -22,7 +22,7 @@ app.get("/", function(req, res){
 
 });
 
-app.use("/restaurants", require("./routes/restaurants.js"))
+app.use("/", require("./routes/restaurants.js"))
 app.use("/stores", require("./routes/stores.js"))
 
 app.listen(8080, function(){
