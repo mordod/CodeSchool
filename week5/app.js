@@ -18,12 +18,18 @@ app.use(methodOverride("_method"));
 app.use("/", express.static("public"));
 
 app.get("/", function(req, res){
-	res.render("index");
+	res.render("hello");
+
+});
+app.get("/ngrestaurants", function(req, res){
+	res.render("ngrestaurants")
+
 
 });
 
 app.use("/", require("./routes/restaurants.js"))
-app.use("/stores", require("./routes/stores.js"))
+
+
 
 app.listen(8080, function(){
 	console.log("SERVER IS DOING STUFF");
