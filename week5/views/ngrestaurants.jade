@@ -5,8 +5,25 @@ block head
 	script(type= "text/javascript" src="/javascripts/application.js")
 	script(type= "text/javascript" src="/javascripts/application.ctrl.js")
 	script(type= "text/javascript" src="/javascripts/restaurant.fct.js")
+	script(type= "text/javascript" src="/javascripts/restaurant_form.ctrl.js")
 block content
 	h1 ngRestaurants
 	div(ng-controller="RestaurantsCtrl as restaurantsCtrl")
 			div(ng-repeat=' restaurant in restaurantsCtrl.restaurants').
 				{{ restaurant.name }}
+	div(ng-controller="RestaurantFormCtrl as formCtrl")
+		form(ng-submit="formCtrl.addRestaurant()")
+			| Name:
+			br
+			input(type='text', name='name' ng-model="formCtrl.newRestaurant.name")
+			br
+			| Type:
+			br
+			input(type='text', name='type' ng-model="formCtrl.newRestaurant.type")
+			br
+			| Phone:
+			br
+			input(type='text', name='phone' ng-model="formCtrl.newRestaurant.phone")
+			br
+			input(type='submit' value="Create Restaurant")
+
