@@ -1,0 +1,6 @@
+<h2>Restaurant: {{ detailCtrl.restaurant.name }}</h2>
+<ul>
+	<li ng-repeat="restaurant in restaurantsCtrl.restaurants">
+		<a ui-sref='restaurantDetail(restaurant)'>{{ restaurant.name }}</a>
+	</li>
+</ul>

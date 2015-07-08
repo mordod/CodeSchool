@@ -1,8 +1,13 @@
 (function () {
 	angular.module("lunchApp")
-		.controller("RestaurantsCtrl",["Restaurant", function (Restaurant){
-			this.hello = "HERRO? WORLD?";
-			this.restaurants = Restaurant.query()
+		.controller("RestaurantsCtrl",["Restaurant", "$scope", function (Restaurant, $scope){
+			this.restaurants = Restaurant.query();
+
+			var ctrl = this;
+
+			$scope.$on("restaurantCreated", function (event, restaurant){
+				ctrl.restaurants.push(restaurant);
+			});
 				
 		}]);
 })();

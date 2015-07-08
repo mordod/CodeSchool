@@ -1,0 +1,14 @@
+<h2>New Restaurant</h2>
+	<form ng-submit="formCtrl.addRestaurant()">
+		Name:	
+		<input type='text' name='name' ng-model="formCtrl.newRestaurant.name">
+		<br>
+		| Type:
+		<br>
+		<input type='text' name='type' ng-model="formCtrl.newRestaurant.type">
+		<br>
+		| Phone:
+		<br>
+		<input type='text' name='phone' ng-model="formCtrl.newRestaurant.phone">
+		<br>
+		<input type='submit' value="Create Restaurant">
