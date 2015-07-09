@@ -6,3 +6,7 @@
 <p>
 	Phone: {{detailCtrl.restaurant.phone}}
 </p>
+<p>
+	<a ui-sref="restaurantEdit(detailCtrl.restaurant)">Edit Restaurant</a>
+	<button ng-click="detailCtrl.deleteRestaurant()">DELETE</button>
+</p>

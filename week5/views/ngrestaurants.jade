@@ -6,11 +6,15 @@ block head
 	script(type= "text/javascript" src="/javascripts/application.js")
 	script(type= "text/javascript" src="/javascripts/application.ctrl.js")
 	script(type= "text/javascript" src="/javascripts/restaurant.fct.js")
-	script(type= "text/javascript" src="/javascripts/restaurant_form.ctrl.js")
+	script(type= "text/javascript" src="/javascripts/restaurant_new.ctrl.js")
 	script(type= "text/javascript" src="/javascripts/restaurant_detail.ctrl.js")
+	script(type= "text/javascript" src="/javascripts/restaurant_edit.ctrl.js")
+	script(type= "text/javascript" src="/javascripts/restaurant_search.ctrl.js")
 block content
 	div(ui-view="")
 	p
 		a(ui-sref='restaurantList') All Restaurants
 		=" "
-		a(ui-sref='restaurantForm') New Restaurant
+		a(ui-sref='restaurantNew') New Restaurant
+		=" "
+		a(ui-sref='restaurantSearch') Search Restaurant

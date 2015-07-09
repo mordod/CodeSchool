@@ -9,9 +9,9 @@
 					controllerAs: "restaurantsCtrl",
 					templateUrl: "templates/restaurant.html"
 				})
-				.state('restaurantForm', {
+				.state('restaurantNew', {
 					url : '/new',
-					controller: "RestaurantFormCtrl",
+					controller: "RestaurantNewCtrl",
 					controllerAs: "formCtrl",
 					templateUrl: "templates/restaurant_form.html"
 				})
@@ -20,6 +20,18 @@
 					controller: "RestaurantDetailCtrl",
 					controllerAs: "detailCtrl",
 					templateUrl: "templates/restaurant_detail.html"
+				})
+				.state('restaurantEdit', {
+					url : '/edit/:_id',
+					controller: "RestaurantEditCtrl",
+					controllerAs: "formCtrl",
+					templateUrl: "templates/restaurant_form.html"
+				})
+				.state('restaurantSearch', {
+					url : '/all',
+					controller: "RestaurantSearchCtrl",
+					controllerAs: "SearchCtrl",
+					templateUrl: "templates/restaurant.html"
 				})
 
 		}]);

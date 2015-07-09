@@ -86,7 +86,7 @@ var RestaurantsController = {
 
 	},
 	update: function(req, res){
-		Restaurant.findOne({_id: req.params.id},{
+		Restaurant.findOneAndUpdate({_id: req.params.id},{
 			name: req.body.name,
 			type: req.body.type,
 			phone: req.body.phone
@@ -103,7 +103,7 @@ var RestaurantsController = {
 	destroy: function(req, res){
 		Restaurant.remove({_id: req.params.id}, function (err){
 			if (req.params.format == "json"){
-				res.status(200).json(restaurant);
+				res.status(204).json("");
 			}else{
 				res.redirect("/restaurants");	
 			}	

@@ -12,8 +12,8 @@ router.get("/restaurants/new", RestaurantsController.new);
 router.post("/restaurants(.:format)?", RestaurantsController.create);
 router.get("/restaurants/(:id)(.:format)?", RestaurantsController.show);
 router.get("/restaurants/:id/edit", RestaurantsController.edit);
-router.put("/restaurants/:id", RestaurantsController.update);
-router.delete("/restaurants/:id", RestaurantsController.destroy);
+router.put("/restaurants/(:id)(.:format)?", RestaurantsController.update);
+router.delete("/restaurants/(:id)(.:format)?", RestaurantsController.destroy);
 
 
 module.exports = router;
