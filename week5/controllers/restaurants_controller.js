@@ -3,15 +3,24 @@ var Restaurant = require("../models/restaurants.js");
 var RestaurantsController = {
 	index: function(req, res) {
 		Restaurant.find({}, function(err, restaurants) {
-			if (req.params.format == "json"){
-				res.json(restaurants);
-
-			}else{
-				res.render("restaurants/index", {
-				restaurants: restaurants
-				});
+			var dbQuery = {};
+			if(req.query.search){
+				dbQuery.type = new RegExp(req.query.search, "i");
 
 			}
+			Restaurant.find(dbQuery, function (err, restaurants){
+				if (req.params.format == "json"){
+					res.json(restaurants);
+
+				}else{
+					res.render("restaurants/index", {
+						restaurants: restaurants
+					});
+
+				}
+
+			})
+			
 
 
 			//

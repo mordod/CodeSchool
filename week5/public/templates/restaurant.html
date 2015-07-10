@@ -1,14 +1,14 @@
-<h2>Restaurant: {{ detailCtrl.restaurant.name }}</h2>
-<form ng-submit="SerachCtrl.searchRestaurant()">
-	<select>
-	  <option value="name">Name</option>
-	  <option value="id">Id</option>
-	  <option value="type">Type</option>
-	  <option value="phone">Phone</option>
-	</select>
-	<input type="search" name="Search" value="Keyword">
-	<input type="submit" value="Search">
-</form>
+<h2>Restaurant</h2>
+<p>
+	<form ng-submit="restaurantsCtrl.searchRestaurants()">
+		<input type="text" name="Search" ng-model="restaurantsCtrl.searchKeyword">
+		<input type="submit" value="Search">
+	</form>
+</p>
+<p>
+	<button ng-click="restaurantsCtrl.pickRandomRestaurant()">
+		Pick Random Restaurant
+	</button>
 <ul>
 	<li ng-repeat="restaurant in restaurantsCtrl.restaurants">
 		<a ui-sref='restaurantDetail(restaurant)'>{{ restaurant.name }}</a>

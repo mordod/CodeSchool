@@ -27,12 +27,6 @@
 					controllerAs: "formCtrl",
 					templateUrl: "templates/restaurant_form.html"
 				})
-				.state('restaurantSearch', {
-					url : '/all',
-					controller: "RestaurantSearchCtrl",
-					controllerAs: "SearchCtrl",
-					templateUrl: "templates/restaurant.html"
-				})
 
 		}]);
 })();
