@@ -4,7 +4,8 @@ var express = require('express'),
 	bodyParser = require("body-parser"),
 	methodOverride = require("method-override");
 
-mongoose.connect('mongodb://neon/mccade');
+//mongoose.connect('mongodb://neon/mccade');
+mongoose.connect('mongodb://localhost/mccade');
 
 
 // create a new express app
