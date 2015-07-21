@@ -1,10 +1,13 @@
 // Setup basic express server
 var express = require('express');
 var app = express();
+var methodOverride = require("method-override");
 var mongoose = require("mongoose");
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var port = process.env.PORT || 8080;
+
+mongoose.connect('mongodb://mongodb.cs.dixie.edu/mccade');
 
 server.listen(port, function () {
   console.log('Server listening at port %d', port);
@@ -12,7 +15,7 @@ server.listen(port, function () {
 
 // Routing
 app.use("/", express.static('public'));
-
+app.use("/", require("./routes/spacecamp_route.js"))
 
 // Chatroom 
 
