@@ -1,21 +1,28 @@
 // Setup basic express server
 var express = require('express');
 var app = express();
-var methodOverride = require("method-override");
+// var methodOverride = require("method-override");
 var mongoose = require("mongoose");
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
+var bodyParser = require('body-parser');
 var port = process.env.PORT || 8080;
 
 mongoose.connect('mongodb://mongodb.cs.dixie.edu/mccade');
 
+//app.get("/", function(req, res){
+ // res.send("hello");
+//});
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+// Routing
+app.use("/", express.static('public'));
+app.use("/", require("./routes/logEntry_route.js"))
+
 server.listen(port, function () {
   console.log('Server listening at port %d', port);
 });
-
-// Routing
-app.use("/", express.static('public'));
-app.use("/", require("./routes/spacecamp_route.js"))
 
 // Chatroom 
 

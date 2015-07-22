@@ -63,6 +63,7 @@ $(function() {
         username: username,
         message: message
       });
+      sendMessageToServer(message, username);
       // tell server to execute 'new message' and send along one parameter
       socket.emit('new message', message);
     }
@@ -187,6 +188,26 @@ $(function() {
     var index = Math.abs(hash % COLORS.length);
     return COLORS[index];
   }
+
+  function sendMessageToServer (message, username) {
+    $.post("/log_entries", {
+      text: message,
+      name: username
+    });
+  }
+
+  $.get("/log_entries", function(logEntries){
+    $.each(logEntries, function(index,logEntry){ 
+      console.log(logEntry)
+      addChatMessage({
+        
+        message:  logEntry.text,
+        username: logEntry.name
+      });
+    });
+    
+
+  });
 
   // Keyboard events
 

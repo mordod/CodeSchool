@@ -3,11 +3,12 @@ var mongoose = require("mongoose");
 var schema = new mongoose.Schema({
 	name: String,
 	text: String,
-	time: Date
+	time: Date,
+	position: String
 
 });
 
-var Spacecamp = mongoose.model("spacecamp", schema);
+var LogEntry = mongoose.model("LogEntry", schema);
 
 
-module.exports = Spacecamp;
+module.exports = LogEntry;

@@ -1,5 +1,5 @@
 (function (){
 	angular.module("space")
-		.controller('MonitorCtrl', [ "$stateParams", "$state", function ( $stateParams, $state){
+		.controller('MonitorCtrl', ["$resource", "$stateParams", "$state", function ( $resource, $stateParams, $state){
 		}]);
 })();
