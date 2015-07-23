@@ -21,6 +21,24 @@
 					controllerAs: "monitor",
 					templateUrl: "templates/monitor.html"
 				})
+				.state('captain', {
+					url : '/captain',
+					controller: "CaptainCtrl",
+					controllerAs: "captain",
+					templateUrl: "templates/captain.html"
+				})
+				.state('leftWing', {
+					url : '/leftWing',
+					controller: "LeftWingCtrl",
+					controllerAs: "leftWing",
+					templateUrl: "templates/leftWing.html"
+				})
+				.state('rightWing', {
+					url : '/rightWing',
+					controller: "RightWingCtrl",
+					controllerAs: "RightWing",
+					templateUrl: "templates/rightWing.html"
+				})
 				
 
 		}]);
